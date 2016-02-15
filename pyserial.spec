@@ -4,7 +4,7 @@
 #
 Name     : pyserial
 Version  : 2.7
-Release  : 7
+Release  : 8
 URL      : https://pypi.python.org/packages/source/p/pyserial/pyserial-2.7.tar.gz
 Source0  : https://pypi.python.org/packages/source/p/pyserial/pyserial-2.7.tar.gz
 Summary  : Python Serial Port Extension
