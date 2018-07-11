@@ -4,17 +4,18 @@
 #
 Name     : pyserial
 Version  : 3.0.1
-Release  : 19
+Release  : 20
 URL      : https://pypi.python.org/packages/source/p/pyserial/pyserial-3.0.1.tar.gz
 Source0  : https://pypi.python.org/packages/source/p/pyserial/pyserial-3.0.1.tar.gz
 Summary  : Python Serial Port Extension
 Group    : Development/Tools
-License  : Python-2.0
+License  : BSD-3-Clause-Clear Python-2.0
 Requires: pyserial-bin
+Requires: pyserial-python3
+Requires: pyserial-license
 Requires: pyserial-python
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -26,30 +27,57 @@ pySerial  |build-status| |docs|
 %package bin
 Summary: bin components for the pyserial package.
 Group: Binaries
+Requires: pyserial-license
 
 %description bin
 bin components for the pyserial package.
 
 
+%package license
+Summary: license components for the pyserial package.
+Group: Default
+
+%description license
+license components for the pyserial package.
+
+
 %package python
 Summary: python components for the pyserial package.
 Group: Default
+Requires: pyserial-python3
 
 %description python
 python components for the pyserial package.
+
+
+%package python3
+Summary: python3 components for the pyserial package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the pyserial package.
 
 
 %prep
 %setup -q -n pyserial-3.0.1
 
 %build
-python2 setup.py build -b py2
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
+export SOURCE_DATE_EPOCH=1531337199
 python3 setup.py build -b py3
 
 %install
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/pyserial
+cp LICENSE.txt %{buildroot}/usr/share/doc/pyserial/LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
@@ -58,6 +86,13 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot}
 %defattr(-,root,root,-)
 /usr/bin/miniterm.py
 
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/pyserial/LICENSE.txt
+
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*
