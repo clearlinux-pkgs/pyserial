@@ -4,7 +4,7 @@
 #
 Name     : pyserial
 Version  : 3.4
-Release  : 28
+Release  : 29
 URL      : https://files.pythonhosted.org/packages/cc/74/11b04703ec416717b247d789103277269d567db575d2fd88f25d9767fe3d/pyserial-3.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/cc/74/11b04703ec416717b247d789103277269d567db575d2fd88f25d9767fe3d/pyserial-3.4.tar.gz
 Summary  : Python Serial Port Extension
