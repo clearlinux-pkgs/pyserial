@@ -4,7 +4,7 @@
 #
 Name     : pyserial
 Version  : 3.4
-Release  : 29
+Release  : 30
 URL      : https://files.pythonhosted.org/packages/cc/74/11b04703ec416717b247d789103277269d567db575d2fd88f25d9767fe3d/pyserial-3.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/cc/74/11b04703ec416717b247d789103277269d567db575d2fd88f25d9767fe3d/pyserial-3.4.tar.gz
 Summary  : Python Serial Port Extension
@@ -17,17 +17,9 @@ Requires: pyserial-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-Python Serial Port Extension for Win32, OSX, Linux, BSD, Jython, IronPython
-
-Stable:
-
-- Documentation: http://pythonhosted.org/pyserial/
-- Download Page: https://pypi.python.org/pypi/pyserial
-
-Latest:
-
-- Documentation: http://pyserial.readthedocs.io/en/latest/
-- Project Homepage: https://github.com/pyserial/pyserial
+=================================
+pySerial  |build-status| |docs|
+=================================
 
 %package bin
 Summary: bin components for the pyserial package.
@@ -74,12 +66,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583209712
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603401532
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
